@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js"></script>
+</head>
+<body>
+  <div ng-app="hikingApp">
+    <div ng-controller="getTrailsCtrl">
+      <input ng-model="city">
+      <button ng-click="searchTrailsApi(city)">search</button>
+    </div>
+  </div>
+  <script src="../getTrails.js"></script>
+</body>
+</html>
