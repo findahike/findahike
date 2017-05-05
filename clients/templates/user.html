@@ -1,0 +1,12 @@
+<div id="userProfile">
+  <nav class="navbar">
+    <button class="searchNew" ng-click="/takeAHike.html">Search For New Hikes</button>
+  </nav>
+  <body>
+    <h1>Saved Hikes</h1>
+    <div class ="wishListHikes" ng-repeat="hike in wishHikes">
+    </div each-wish-hike ng-click="openHike()">
+    <div class ="completedListHikes" ng-repeat="hike in completedHikes">
+    </div each-completed-hike ng-click="openHike()">
+  </body>
+</div>
