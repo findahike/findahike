@@ -2,8 +2,9 @@
   "name": "firepantz",
   "version": "1.0.0",
   "description": "Greenfield Project HRR23",
-  "main": "server.js",
+  "main": "backend/server.js",
   "scripts": {
+    "start": "nodemon backend/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,5 +22,8 @@
     "express": "^4.15.2",
     "mysql": "^2.13.0",
     "sequelize": "^3.30.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
   }
 }
