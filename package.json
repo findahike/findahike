@@ -1,5 +1,5 @@
 {
-  "name": "firepantz",
+  "name": "findahike",
   "version": "1.0.0",
   "description": "Greenfield Project HRR23",
   "main": "backend/server.js",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vicalden23/firepantz.git"
+    "url": "git+https://github.com/findahike/findahike.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/vicalden23/firepantz/issues"
+    "url": "https://github.com/findahike/findahike/issues"
   },
-  "homepage": "https://github.com/vicalden23/firepantz#readme",
+  "homepage": "https://github.com/findahike/findahike#readme",
   "dependencies": {
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
