@@ -1,1 +1,1 @@
-angular.module('hikingApp', []);
+angular.module('hikingApp', [])
