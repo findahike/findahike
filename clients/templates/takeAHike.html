@@ -1,13 +1,18 @@
 <div class="main-wrapper">
+  <button>See Saved Hikes</button>
   <div class="main">
     <h1>Where Do You Want To Hike?</h1>
     <div>
-      Location: USER_INPUT
-      <textarea>INSERT USER_INPUT</textarea>
+      Enter Location:
+      <textarea>INSERT USER_LOCATION</textarea>
+      <button>Submit Location</button>
     </div>
-    <div>Checkboxes for hike options?</div>
-    <div>Scenic Y/N</div>
-    <div>Intensity E/M/H</div>
-    <div>Rating ?/5</div>
+    <div>
+    <!-- CUSTOMIZING HIKE RESULTS -->
+      <div>Scenic Y/N</div>
+      <div>Intensity E/M/H</div>
+      <div>Rating ?/5</div>
+    </div>
   </div>
+  <div ng-repeat="hike-result">INSERT HIKE RESULT FROM API CALL</div>
 </div>
