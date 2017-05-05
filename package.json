@@ -1,0 +1,19 @@
+{
+  "name": "firepantz",
+  "version": "1.0.0",
+  "description": "Greenfield Project HRR23",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vicalden23/firepantz.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vicalden23/firepantz/issues"
+  },
+  "homepage": "https://github.com/vicalden23/firepantz#readme"
+}
