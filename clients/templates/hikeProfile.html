@@ -1,0 +1,24 @@
+<div id="hikeProfile">
+  <nav class="navbar">
+    <button class="searchNew" ng-click="/takeAHike.html">Search For New Hikes</button>
+    <button class="savedHikes" ng-click="/user.html">Look Up Saved Hikes</button>
+  </nav>
+  <body>
+    <h1>{{HikeName}}</h1>
+    <div class ="pictureSlideShow">
+    </div>
+    <div class ="trailMap">
+    </div ng-click="openLgMap()">
+    <div class ="googleMap">
+    </div ng-click="openGoogleMap()">
+    <div class ="trailAttributes">
+      <ul>
+        <p>Intensity:</p>
+        <p>Length</p>
+        <p>Scenic Rating:</p>
+        <p>Hikers Rating:</p>
+        <p>Cell Reception:</p>
+      </ul>
+    </div >
+  </body>
+</div>
