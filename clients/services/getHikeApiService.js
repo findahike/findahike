@@ -31,6 +31,7 @@ angular.module('hikingApp')
         hike.lat = entry.lat;
         hike.lon = entry.long;
         entry.activites.forEach((activity) => {
+          hike[place_id] = activity[place_id];
           hike.name = activity.name;
           hike.description = activity.description;
           hike.url = activity.url;
