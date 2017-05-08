@@ -1,9 +1,7 @@
 angular.module('hikingApp')
-.controller('appController', ($scope, $http) =>{
-
-
-
-  });
+.controller('appController', ($scope) =>{
+  $scope.
+});
 
 //Shared Functions
 //openHike - to open hike profile page - on user.html & takeAHike.html
