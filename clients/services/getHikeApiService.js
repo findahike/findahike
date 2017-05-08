@@ -1,5 +1,5 @@
 angular.module('hikingApp')
-.service('searchTrailsApi', ($http, city) => {
+.service('getHikeApiService', ($http, city) => {
   this.searchTrailsApi = function(city) {
     console.log('THIS IS THE INPUT CITY', city);
       $http({
