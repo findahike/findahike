@@ -1,13 +1,8 @@
 angular.module('hikingApp')
 
 // Search hikes
-.directive('takeAHike', function() {
+.directive('takeAHike', () => {
   return {
-    controller: function() {
-
-    },
-    bindToController: true,
-    controllerAs: 'ctrl'  /////////////////////////////// PAY ATTENTIOn
     templateUrl: '../templates/takeAHike.html'
   }
-});
+})
