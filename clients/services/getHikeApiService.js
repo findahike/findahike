@@ -23,7 +23,22 @@ angular.module('hikingApp')
     })
     .then((results) => {
       console.log('successfully connected to trails api', results);
-      // TODO: PARSE API RESULTS AND RETURN TO CALL
+      var hikes = [];
+
+      results.places.forEach((entry) => { // extract data of interest
+        var hike = {};
+        hike.directions = entry.directions;
+        hike.lat = entry.lat;
+        hike.lon = entry.long;
+        entry.activites.forEach((activity) => {
+          hike.name = activity.name;
+          hike.description = activity.description;
+          hike.url = activity.url;
+        });
+        hikes.push(hike);
+      });
+
+      callback(hikes);
     })
     .catch((err) => {
       console.log('error connecting to trails api', err);
