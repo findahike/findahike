@@ -31,9 +31,9 @@ Trail.hasMany(Wishlist);
 
 db.sync();
 
-module.exports.connection = db
-module.exports.user = User
-module.exports.completed = Completed
-module.exports.wishlist = Wishlist
-module.exports.trail = Trail
+module.exports.connection = db;
+module.exports.user = User;
+module.exports.completed = Completed;
+module.exports.wishlist = Wishlist;
+module.exports.trail = Trail;
 
