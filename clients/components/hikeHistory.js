@@ -8,5 +8,5 @@ angular.module('hikingApp')
     controllerAs: 'ctrl',
     bindToController: true,
     templateUrl: 'hikeHistory.html'
-  }
-})
+  };
+});

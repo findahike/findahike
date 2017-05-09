@@ -5,4 +5,4 @@ angular.module('hikingApp', [])
   $sceDelegateProvider.resourceUrlWhitelist([
     'self'
   ]);
-})
+});
