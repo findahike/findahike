@@ -25,7 +25,6 @@ app.get('/users/:id', function (req, res) {
       userId: req.params.id
     }
   }).then(function (result) {
-    console.log(result);
     res.send(result)
   })
 })
@@ -56,3 +55,5 @@ app.post('/users/:id/trails', function (req, res) {
     })
   }
 })
+
+
