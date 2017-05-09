@@ -8,7 +8,7 @@ angular.module('hikingApp')
     }
     $http({
       method: 'POST',
-      url: `/users/${id}/trails`,
+      url: `/users/${userId}/trails`,
       data: JSON.stringify(hike)
     })
     .then((data) => {
