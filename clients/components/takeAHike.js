@@ -3,7 +3,13 @@ angular.module('hikingApp')
 // Search hikes
 .directive('takeAHike', () => {
   return {
+    restrict: 'E',
+    scope: {
+      trails: '<',
+      onClick: '<'
+    },
     controller: () => {
+
       //runs through trail array and sorts each object by the search value.
       //when we call the function on the click, we will need to pass in both parameters
       $scope.filter = (trails, searchVal) => {
@@ -12,6 +18,8 @@ angular.module('hikingApp')
         });
       };
     },
+    controllerAs: 'ctrl',
+    bindToController: true,
     templateUrl: '../templates/takeAHike.html'
   };
 });
