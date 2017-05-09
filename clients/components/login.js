@@ -6,7 +6,7 @@ angular.module('hikingApp')
 
     },
     controllerAs: 'ctrl',
-    bindToController: true
+    bindToController: true,
     templateUrl: '../templates/login.html'
-  }
-})
+  };
+});
