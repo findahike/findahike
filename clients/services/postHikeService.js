@@ -1,41 +1,35 @@
 angular.module('hikingApp')
 
 .service('postHikeService', ($http) => {
-  this.saveCompletedHike = (data) => {
+
+  this.saveCompletedHike = (userId, hike) => { // handles wishlist and completed hikes
+    if (hike.rating === undefined) {
+      rating = -1;
+    }
     $http({
       method: 'POST',
-      url: 'api/user/completedHike', //<----need user id?
-      data: JSON.stringify({
-        id: $scope.data.trailId,
-        name: $scope.data.trailName,
-        description: $scope.data.trailDescription,
-        userId: $scope.data.userId
-      })
+      url: `/users/${id}/trails`,
+      data: JSON.stringify(hike)
     })
-    .success((data) => {
-      console.log(data, 'Completed hike saved');
+    .then((data) => {
+      return data;
     })
     .error((data, status) => {
       console.log(status, 'error saving completed hike');
     });
   };
 
-  this.saveWishListHike = (data) => {
+  this.saveUser = (username) => {
     $http({
       method: 'POST',
-      url: 'api/user/wishListHike', //<----need user id?
-      data: JSON.stringify({
-        id: $scope.data.trailId,
-        name: $scope.data.trailName,
-        description: $scope.data.trailDescription,
-        userId: $scope.data.userId
-      })
+      url: `/users/${username}`
     })
-    .success((data) => {
-      console.log(data, 'Wish list hike saved');
+    .then((data) => {
+      return data;
     })
-    .error((data, status) => {
-      console.log(status, 'error saving wish list hike');
+    .error((err) => {
+      console.log('error saving user', err);
     });
   };
+
 })
