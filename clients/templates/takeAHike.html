@@ -1,18 +1,27 @@
+<meta name=“viewport” content=“width=device-width, initial-scale=1">
 <div class="main-wrapper">
   <button class="savedHikes">See Saved Hikes</button>
   <div class="main">
     <h1>Where Do You Want To Hike?</h1>
     <div>
       Enter Location:
-      <textarea>INSERT USER_LOCATION</textarea>
-      <button>Submit Location</button>
+      <textarea ng-model="location">INSERT USER_LOCATION</textarea>
+      <button ng-click="searchTrailsApi(location)">Submit Location</button>
     </div>
     <div>
-    <!-- CUSTOMIZING HIKE RESULTS AKA FILTER-BY-->
-      <div>Scenic Y/N</div>
-      <div>Intensity E/M/H</div>
-      <div>Rating ?/5</div>
+      <select>
+        <option value="rating" ng-click="ctrl.filter(searchResults, 'rating')">Rating</option>
+        <option value="intensity" ng-click="ctrl.filter(searchResults, 'intensity')">Intensity</option>
+        <option value="scenic" ng-click="ctrl.filter(searchResults, 'scenic')">Scenic</option>
+        <option value="cellphoneReception" ng-click="ctrl.filter(searchResults, 'cellphoneReception')">Cellphone Reception</option>
+      </select>
     </div>
   </div>
-  <div ng-repeat="hike-result">INSERT HIKE RESULT FROM API CALL</div>
+  <div ng-repeat="hike in searchResults">
+    <div class="hike-wrapper">
+      <div class="hike">
+        {{hike.name}}
+      </div>
+    </div>
+  </div>
 </div>
