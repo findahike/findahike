@@ -1,24 +1,29 @@
 angular.module('hikingApp')
-.controller('appController', ($scope, getHikeApiService, getHikeService, postHikeService) =>{
-  $scope.searchTrailsApi = getHikeApiService.searchTrailsApi;
-  $scope.findCompletedHikes = getHikeService.findCompletedHikes;
-  $scope.findWishListHikes = getHikeService.findWishListHikes;
-  $scope.getTrailProfile = getHikeService.getTrailProfile;
-  $scope.saveCompletedHike = postHikeService.saveCompletedHike;
-  $scope.saveWishListHike = postHikeService.saveWishListHike;
+.controller('appController', ($scope, getHikeApiService, getHikeService, postHikeService) => {
+
+  // query the api
+  $scope.searchTrailsApi = (city, lat, lon) => {
+    getHikeApiService.searchTrailsApi(city, lat, lon)
+    .then(searchResults => $scope.searchResults = searchResults);
+  };
+
+  // insert a completed hike into db
+  $scope.saveCompletedHike = (userId, hike) => {
+    postHikeService.saveCompletedHike(userId, hike)
+    .then(hike => console.log('hike succesfully saved', hike));
+  };
+
+  // get the user profile from database
+  $scope.getUserProfile = (userId) => {
+    getHikeApiService.getUserProfile(userId)
+    .then(userProfile => $scope.userProfile = userProfile); // expose userProfile
+  };
+
+  // create a new user
+  $scope.saveUser = (username) => {
+    postHikeService.saveUser(username)
+    .then(username => console.log('succesfully created new user'));
+  };
+
 })
-// TODO: BREAK CONTROLLER INTO THESE PIECES:
-//Shared Functions
-//openHike - to open hike profile page - on user.html & takeAHike.html
 
-//Take A Hike Functions
-
-//User Profile Functions
-//list completed hikes
-//list saved hikes
-
-//Hike Profile Functions
-//openLgMap - open larger view of map given from API
-//openGoogleMap - gets directions from googleMaps
-
-//
