@@ -9,6 +9,12 @@ angular.module('hikingApp')
 
   // insert a completed hike into db
   $scope.saveCompletedHike = (userId, hike) => {
+    // decorate hike with user input
+    hike.recommendation = $scope.recommendation;
+    hike.cellphoneReception = $scope.cellphoneReception;
+    hike.intensity = $scope.intensity;
+    hike.scenic = $scope.scenic;
+    hike.rating = $scope.rating;
     postHikeService.saveCompletedHike(userId, hike)
     .then(hike => console.log('hike succesfully saved', hike));
   };
