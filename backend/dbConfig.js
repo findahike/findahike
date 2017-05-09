@@ -24,6 +24,12 @@ var Trail = db.define('trail', {
   url: Sequelize.STRING
 });
 
+var Wishlist = db.define('wishlist', {
+  trail: Sequelize.STRING,
+  latitude: Sequelize.DECIMAL(10,6),
+  longitude: Sequelize.DECIMAL(10,6)
+});
+
 User.hasMany(Completed);
 User.hasMany(Wishlist);
 Trail.hasMany(Completed);
