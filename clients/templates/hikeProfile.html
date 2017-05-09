@@ -1,24 +1,37 @@
 <div id="hikeProfile">
+  <link rel="stylesheet" type="text/css" href="hikeProfile.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
   <nav class="navbar">
     <button class="searchNew" ng-click="/takeAHike.html">Search For New Hikes</button>
     <button class="savedHikes" ng-click="/user.html">Look Up Saved Hikes</button>
   </nav>
   <body>
     <h1>{{HikeName}}</h1>
-    <div class ="pictureSlideShow">
+    <div class="container">
+      <div class="row">
+        <div class ="pictureSlideShow">
+        </div>
+      </div>
+      <div class="row">
+        <div class ="trailMap">
+        </div ng-click="openLgMap()">
+      </div>
+      <div class="row">
+        <div class ="googleMap">
+        </div ng-click="openGoogleMap()">
+      </div>
+      <div class="row">
+        <div class ="trailAttributes" ng-controller="starCtrl">
+             <div ng-controller="StarCtrl" ng-app="starApp"> <span ng-repeat="rating in ratings">{{rating.name}}: {{rating.current}} out of
+            {{rating.max}}
+        <div star-rating rating-value="rating.current" max="rating.max" ></div>
+        </span>
+        <ul>
+          <p>Length: {{trail.length}}</p>
+        </ul>
+        </div >
+      </div>
     </div>
-    <div class ="trailMap">
-    </div ng-click="openLgMap()">
-    <div class ="googleMap">
-    </div ng-click="openGoogleMap()">
-    <div class ="trailAttributes">
-      <ul>
-        <p>Intensity:</p>
-        <p>Length</p>
-        <p>Scenic Rating:</p>
-        <p>Hikers Rating:</p>
-        <p>Cell Reception:</p>
-      </ul>
-    </div >
+    <script src="../components/stars.js"></script>
   </body>
 </div>
