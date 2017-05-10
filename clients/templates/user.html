@@ -1,19 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" type="text/css" href="hikeProfile.css">
+    </head>
+    <body>
+      <nav class="navbar navbar-default navbar-static-top">
+        <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#" ng-click="changeViewState('takeAHike')">Take A Hike</a>
+          <p class="navbar-text">Signed in as {{user.name}}</p>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active">
+              <button type="button" class="btn btn-default btn-md navbar-btn" on-click="getUserProfile">
+                See Saved Hikes
+              </button>
+            </li>
+            <li class="active">
+              <button type="button" class="btn btn-default btn-md navbar-btn" ng-click="changeViewState('takeAHike')">
+                Search New Hike
+              </button>
+            </li>
+            <li class="active">
+              <button type="button" class="btn btn-default btn-md navbar-btn">
+                Log In
+              </button>
+            </li>
+            <li class="active">
+              <button type="button" class="btn btn-default btn-md navbar-btn">
+                Log Out
+              </button>
+            </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
+<!--       Everything above ^^^^ needs to be deleted before joining with index.hmtl -->
 <div id="userProfile">
   <h1 class="text-center">Saved Hikes</h1>
   <div class="container">
     <div class="row">
       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-<!--           <div class="wishListHikes" ng-repeat="hike in wishHikes">
-        </div each-wish-hike ng-click="openHike()"> -->
-        <h1>Wish List Hikes</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vestibulum massa at mauris tempor rhoncus. Suspendisse fermentum mi ac libero tristique blandit gravida eget nibh. Nulla aliquet, lectus sed ullamcorper tincidunt, mi nibh efficitur tellus, eget bibendum velit nisi quis lectus. Duis dapibus auctor elementum. Phasellus non libero venenatis, ultricies mi varius, pretium est. In porttitor pharetra consectetur. Aliquam et lacinia nisi, ut cursus purus. Curabitur vitae nunc id erat cursus faucibus. Sed interdum dignissim arcu, sed placerat massa. Quisque magna est, ultrices pharetra egestas sed, pellentesque ac augue. Suspendisse condimentum risus vel felis hendrerit, non fermentum ex condimentum. Sed sagittis, ex sit amet pretium condimentum, dui quam varius nisi, at venenatis sem nibh a massa. Aliquam sit amet metus molestie, fringilla felis at, tincidunt nulla.</p>
+      <h1 class="text-center">Wish List Hikes</h1>
+          <div class="wishListHikes" ng-repeat="hike in wishHikes">
+            <div class="row" id="hike">
+                <div class="col-sm-3">
+                  <img src="http://radnorlake.org/wp-content/gallery/trails/April-7th-Ganier-and-Lake-Trail-Pix-by-Steve-Ward-with-Americorps-2015-51.JPG" class="img-thumbnail" alt="Cinque Terre" width="150" height="150">
+                </div>
+                <div class="col-sm-3">
+                  <p>{{hike.name}}</p>
+                  <p>{{hike.city}}</p>
+                  <p>{{hike.length}}</p>
+                  <div class="row">
+                    <div id="App2" ng-controller="StarCtrl">
+                      <span ng-repeat="rating in ratings">
+                      {{rating.name}}: {{rating.current}} out of {{rating.max}}
+                        <div star-rating rating-value="rating.current" max="rating.max" ></div>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div each-wish-hike ng-click="openHike()">
       </div>
       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-<!--           <div class ="completedListHikes" ng-repeat="hike in completedHikes">
-        </div each-completed-hike ng-click="openHike()"> -->
-        <h1>Completed Hikes</h1>
-        <p>Proin vestibulum lectus ac magna consectetur, quis facilisis ligula consectetur. Nam faucibus ultricies ipsum. Praesent pellentesque turpis metus, a luctus urna aliquam a. Cras facilisis consectetur nulla, eu placerat purus bibendum sed. Suspendisse ullamcorper nisl vel ipsum consequat eleifend. Duis interdum sapien quis diam bibendum convallis. Fusce non mattis massa. Suspendisse sodales mauris in turpis euismod pharetra. Etiam non arcu hendrerit, vehicula mauris sit amet, rutrum elit. Quisque orci dolor, malesuada nec congue quis, mattis vel turpis. Vestibulum quis volutpat arcu, at aliquam sapien. Quisque non mi nec diam bibendum imperdiet eu in metus. Aliquam ultrices id quam id posuere. Suspendisse vitae semper purus. Proin rutrum turpis libero, non tincidunt risus placerat vitae. Morbi vel nunc accumsan, elementum est ac, posuere elit.</p>
+        <h1 class="text-center">Completed Hikes</h1>
+        <div class ="completedListHikes" ng-repeat="hike in completedHikes">
+          <div class="row" id="hike">
+            <div class="col-sm-3">
+              <img src="http://radnorlake.org/wp-content/gallery/trails/April-7th-Ganier-and-Lake-Trail-Pix-by-Steve-Ward-with-Americorps-2015-51.JPG" class="img-thumbnail" alt="Cinque Terre" width="150" height="150">
+            </div>
+            <div class="col-sm-3">
+              <p>{{hike.name}}</p>
+              <p>{{hike.city}}</p>
+              <p>{{hike.length}}</p>
+              <div id="App2" ng-controller="StarCtrl">
+                <span ng-repeat="rating in ratings">
+                  {{rating.name}}: {{rating.current}} out of {{rating.max}}
+                  <div star-rating rating-value="rating.current" max="rating.max" ></div>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div each-completed-hike ng-click="openHike()">
+
       </div>
     </div>
   </div>
 </div>
+<!--     Delete body and html closing tags before joining with index.html -->
+    <script src="../components/stars.js"></script>
+  </body>
+</html>
