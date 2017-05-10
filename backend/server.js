@@ -7,16 +7,19 @@ var app = express();
 app.use(bodyParser.json({strict: false}));
 app.use(bodyParser.text());
 
-app.use(express.static(__dirname + '/../public'));
+// app.use(express.static(__dirname + '/../public'));
+
+// moved index.html into the root
+app.use(express.static('./'));
 
 app.listen(port, function() {
   console.log(`Running the server on port ${port}`);
 })
 
-app.get('/', function (req, res) {
-  // Load app homepage.
-  res.end();
-})
+// app.get('/', function (req, res) {
+//   // Load app homepage.
+//   res.end();
+// })
 
 app.get('/users/:id', function (req, res) {
   // Load profile page for specified user.

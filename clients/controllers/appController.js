@@ -1,6 +1,12 @@
 angular.module('hikingApp')
 .controller('appController', ($scope, getHikeApiService, getHikeService, postHikeService) => {
 
+  // control views
+  $scope.changeViewState = page => {
+    $scope.viewState = page;
+    console.log('changed view to ', $scope.viewState);
+  };
+
   // query the api
   $scope.searchTrailsApi = (city, lat, lon) => {
     getHikeApiService.searchTrailsApi(city, lat, lon)

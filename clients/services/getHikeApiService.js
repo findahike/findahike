@@ -1,6 +1,6 @@
 angular.module('hikingApp')
 
-.service('getHikeApiService', ($http, city) => {
+.service('getHikeApiService', function($http) {
 
   this.searchTrailsApi = (city, lat, lon) => {
 
@@ -48,4 +48,4 @@ angular.module('hikingApp')
     });
   };
 
-})
+});

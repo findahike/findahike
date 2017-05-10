@@ -1,6 +1,6 @@
 angular.module('hikingApp')
 
-.service('postHikeService', ($http) => {
+.service('postHikeService', function($http) {
 
   this.saveCompletedHike = (userId, hike) => { // handles wishlist and completed hikes
     if (hike.rating === undefined) {
