@@ -7,9 +7,7 @@ var app = express();
 app.use(bodyParser.json({strict: false}));
 app.use(bodyParser.text());
 
-// app.use(express.static(__dirname + '/../public'));
-
-// moved index.html into the root
+// Serving index.html from the root
 app.use(express.static('./'));
 
 app.listen(port, function() {
@@ -21,40 +19,51 @@ app.listen(port, function() {
 //   res.end();
 // })
 
-app.get('/users/:id', function (req, res) {
-  // Load profile page for specified user.
-  db.wishlist.findAll({
-    where: {
-      userId: req.params.id
-    }
-  }).then(function (result) {
-    res.send(result)
-  })
-})
+app.get('/users/:name', function (req, res) {
+  /*
+    Return the profile info for the specified user.
+    Currently, profile info is only list of completed and wishlist trails.
+  */
+  // Declare var to hold profile.
 
-app.post('/users/:id/', function (req, res) {
-  // Add new user to database. Return name of newly added user.
-  db.user.create({
-    name: req.params.id
-  }).then(function (result) {
-    res.send(result)
-  })
-})
+  // Get user's id from users table.
 
-app.post('/users/:id/trails', function (req, res) {
-  // Add trail to either wishlist or completed.
-  var rating = req.body.rating //update rating variable
-  if (rating === -1) {
-    db.wishlist.create({
-      //USER AND TRAIL ID
-    })
-  } else {
-    db.completed.create({
-      rating: rating,
-      phoneReception: req.body.reception,
-      intensity: req.body.intensity,
-      scenic: req.body.scenic,
-      //USER AND TRAIL ID
-    })
-  }
-})
+  // Use userId to query wishlists.
+
+  // Use userId to query completeds.
+
+
+  // Respond with profile.
+});
+
+app.post('/users/:name', function (req, res) {
+  /*
+    Add new user to database.
+    Return name of newly added user.
+  */
+
+});
+
+app.post('/users/:name/trails', function (req, res) {
+  /*
+    Insert trail to wishlist if rating is -1; else, add to completed.
+    Using rating === -1 as a switch to assign between wishlist and completed.
+    Return inserted trail.
+  */
+  // Get rating from request body.
+  var rating = req.body.rating;
+
+  // If trail already exists in trails table with same latitude and longitude,
+    // Get existent trail's id from trails table.
+  // Else,
+    // Insert trail into trails table and select id.
+
+
+  // If rating is -1,
+    // Create wishlist object.
+    // Insert wishlist object into wishlists table.
+  // Else,
+    // Create completed object.
+    // Insert completed object into completeds table.
+
+});
