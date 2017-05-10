@@ -45,7 +45,7 @@
     };
 });
 
-
+angular.bootstrap(document.getElementById("App2"), ['starApp']);
 
 
 

@@ -1,6 +1,7 @@
 <div id="hikeProfile">
   <link rel="stylesheet" type="text/css" href="hikeProfile.css">
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+<!--   <script src="ajax.googleapis.com/ajax/libs/angularjs/X.Y.Z/angular-route.js"></script> -->
   <nav class="navbar">
     <button class="searchNew" ng-click="/takeAHike.html">Search For New Hikes</button>
     <button class="savedHikes" ng-click="/user.html">Look Up Saved Hikes</button>
@@ -8,8 +9,21 @@
   <body>
     <h1>{{HikeName}}</h1>
     <div class="container">
-      <div class="row">
+      <div id="App1" class="row" ng-app="hikingApp">
         <div class ="pictureSlideShow">
+        <div class="container slider" ng-controller="slideShow">
+    <img ng-repeat="slide in slides" class="slide"
+         ng-hide="!isCurrentSlideIndex($index)" ng-src="{{slide.image}}">
+    <nav class="nav">
+        <div class="wrapper">
+            <ul class="dots">
+                <li class="dot" ng-repeat="slide in slides">
+                    <a href="#" ng-class="{'active':isCurrentSlideIndex($index)}"
+                       ng-click="setCurrentSlideIndex($index);">{{slide.description}}</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
         </div>
       </div>
       <div class="row">
@@ -21,17 +35,19 @@
         </div ng-click="openGoogleMap()">
       </div>
       <div class="row">
-        <div class ="trailAttributes" ng-controller="starCtrl">
-             <div ng-controller="StarCtrl" ng-app="starApp"> <span ng-repeat="rating in ratings">{{rating.name}}: {{rating.current}} out of
+
+        <div class ="trailAttributes">
+             <div id="App2" ng-controller="StarCtrl" ng-app="starApp"> <span ng-repeat="rating in ratings">{{rating.name}}: {{rating.current}} out of
             {{rating.max}}
         <div star-rating rating-value="rating.current" max="rating.max" ></div>
         </span>
         <ul>
           <p>Length: {{trail.length}}</p>
         </ul>
-        </div >
+        </div>
       </div>
     </div>
     <script src="../components/stars.js"></script>
+    <script src="../controllers/hikeProfile.js"></script>
   </body>
 </div>
