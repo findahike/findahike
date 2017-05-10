@@ -12,15 +12,6 @@
     <h1>{{HikeName}}</h1>
     <div class="container">
       <div id="App1" class="row" ng-app="hikingApp">
-        <div ng-controller="AerialRotateCtrl as vm">
-          <input type="button" value="Auto Rotate" ng-click="vm.autoRotate();">
-          <ng-map class="center" center="43.71274, -70.28522"
-            zoom="18"
-            map-type-id="SATELLITE"
-            tilt="45"
-            heading="90">
-          </ng-map>
-        </div>
         <div class ="pictureSlideShow">
           <div class="container slider" ng-controller="slideShow">
             <img ng-repeat="slide in slides" class="slide"
@@ -36,6 +27,17 @@
               </div>
             </nav>
           </div>
+      </div>
+      <div id="map" class="row" ng-app="hikingApp">
+        <div ng-controller="AerialRotateCtrl as vm">
+          <input type="button" value="Auto Rotate" ng-click="vm.autoRotate();">
+          <ng-map class="center" center="43.71274, -70.28522"
+            zoom="18"
+            map-type-id="SATELLITE"
+            tilt="45"
+            heading="90">
+          </ng-map>
+        </div>
         </div>
       </div>
     </div>
@@ -53,8 +55,8 @@
           </div>
         </div>
       </div>
-    <script src="../components/stars.js"></script>
     <script src="../controllers/map.js"></script>
     <script src="../controllers/hikeProfile.js"></script>
+    <script src="../components/stars.js"></script>
   </body>
 </div>
