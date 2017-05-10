@@ -72,7 +72,7 @@ trails.forEach(function (trail) {
 });
 
 // Seed completeds table.
-users.slice(0,2).forEach(function (user) {
+users.slice(0,3).forEach(function (user) {
   trails.forEach(function (trail) {
     var completed = {};
 
