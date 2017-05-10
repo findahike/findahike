@@ -75,9 +75,28 @@ app.get('/users/:name', function (req, res) {
 app.post('/users/:name', function (req, res) {
   /*
     Add new user to database.
-    Return name of newly added user.
+    Return name of user.
+
+    @todo:
+      - Implement a unique username policy.
   */
 
+  db.query('INSERT INTO users SET ?', {name: req.params.name}, function (err) {
+    if (err) {
+      console.log('Error inserting into users table.');
+      throw err;
+    }
+
+    // Query users table so client can verify insertion.
+    var userQuery = 'SELECT name FROM users WHERE name = ?';
+    db.query(userQuery, [req.params.name], function (err, result) {
+      if (err) {
+        console.log('Error verifying insert into users table.');
+        throw err;
+      }
+      res.send(...result);
+    });
+  });
 });
 
 app.post('/users/:name/trails', function (req, res) {
