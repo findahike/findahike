@@ -55,5 +55,3 @@ app.post('/users/:id/trails', function (req, res) {
     })
   }
 })
-
-
