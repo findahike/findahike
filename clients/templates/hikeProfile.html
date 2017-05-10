@@ -10,43 +10,38 @@
     <h1>{{HikeName}}</h1>
     <div class="container">
       <div id="App1" class="row" ng-app="hikingApp">
-        <div class ="pictureSlideShow">
-        <div class="container slider" ng-controller="slideShow">
-    <img ng-repeat="slide in slides" class="slide"
+      <div class ="pictureSlideShow">
+      <div class="container slider" ng-controller="slideShow">
+      <img ng-repeat="slide in slides" class="slide"
          ng-hide="!isCurrentSlideIndex($index)" ng-src="{{slide.image}}">
-    <nav class="nav">
+      <nav class="nav">
         <div class="wrapper">
-            <ul class="dots">
-                <li class="dot" ng-repeat="slide in slides">
-                    <a href="#" ng-class="{'active':isCurrentSlideIndex($index)}"
-                       ng-click="setCurrentSlideIndex($index);">{{slide.description}}</a></li>
-            </ul>
+          <ul class="dots">
+            <li class="dot" ng-repeat="slide in slides">
+              <a href="#" ng-class="{'active':isCurrentSlideIndex($index)}"
+                ng-click="setCurrentSlideIndex($index);">{{slide.description}}</a>
+            </li>
+          </ul>
         </div>
-    </nav>
-</div>
-        </div>
+      </nav>
       </div>
-      <div class="row">
-        <div class ="trailMap">
-        </div ng-click="openLgMap()">
       </div>
-      <div class="row">
-        <div class ="googleMap">
-        </div ng-click="openGoogleMap()">
-      </div>
-      <div class="row">
-
-        <div class ="trailAttributes">
-             <div id="App2" ng-controller="StarCtrl" ng-app="starApp"> <span ng-repeat="rating in ratings">{{rating.name}}: {{rating.current}} out of
-            {{rating.max}}
-        <div star-rating rating-value="rating.current" max="rating.max" ></div>
-        </span>
-        <ul>
-          <p>Length: {{trail.length}}</p>
-        </ul>
-        </div>
       </div>
     </div>
+
+      <div class="row">
+        <div class ="trailAttributes">
+          <div id="App2" ng-controller="StarCtrl" ng-app="starApp">
+            <span ng-repeat="rating in ratings">
+            {{rating.name}}: {{rating.current}} out of {{rating.max}}
+              <div star-rating rating-value="rating.current" max="rating.max" ></div>
+            </span>
+            <ul>
+              <p>Length: {{trail.length}}</p>
+            </ul>
+          </div>
+        </div>
+      </div>
     <script src="../components/stars.js"></script>
     <script src="../controllers/hikeProfile.js"></script>
   </body>
