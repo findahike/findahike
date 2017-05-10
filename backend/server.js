@@ -25,15 +25,51 @@ app.get('/users/:name', function (req, res) {
     Currently, profile info is only list of completed and wishlist trails.
   */
   // Declare var to hold profile.
+  var profile = {};
 
   // Get user's id from users table.
+  var userId;
+  var usersQuery = 'SELECT id FROM users WHERE name = ?';
+  db.query(usersQuery, [req.params.name], function (err, result) {
+    if (err) {
+      console.log('Error querying users table.');
+      throw err;
+    }
+    userId = result[0].id;
 
-  // Use userId to query wishlists.
+    // Use userId to query wishlists.
+    var wishlistQuery = `
+      SELECT trails.*
+      FROM wishlists
+      JOIN trails ON wishlists.trailId = trails.id
+      WHERE wishlists.userId = ?
+    `;
+    db.query(wishlistQuery, [userId], function (err, result) {
+      if (err) {
+        console.log('Error querying wishlists table.');
+        throw err;
+      }
+      profile.wishlist = result;
 
-  // Use userId to query completeds.
+      // Use userId to query completeds.
+      var completedQuery = `
+        SELECT trails.*
+        FROM completeds
+        JOIN trails ON completeds.trailId = trails.id
+        WHERE completeds.userId = ?
+      `;
+      db.query(completedQuery, [userId], function (err, result) {
+        if (err) {
+          console.log('Error querying completeds table.')
+          throw err;
+        }
+        profile.completeds = result;
 
-
-  // Respond with profile.
+        // Respond with profile.
+        res.send(profile);
+      });
+    });
+  });
 });
 
 app.post('/users/:name', function (req, res) {
