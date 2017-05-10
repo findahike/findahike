@@ -13,8 +13,11 @@ angular.module('hikingApp')
       activity: 'q[activities_activity_type_name_eq]=hiking',
       radius: 'radius=25'
     };
+    // need to do this or api query won't work?
+    lat ? apiParams.lat : apiParams.lat = '';
+    lon ? apiParams.lon : apiParams.lon = '';
 
-    $http({
+    return $http({
       url: `${apiParams.url}?${apiParams.limit}&${apiParams.activity}&${apiParams.city}&${apiParams.radius}&${apiParams.lat}&${apiParams.lon}`,
       method: 'GET',
       dataType: 'json',
@@ -23,15 +26,15 @@ angular.module('hikingApp')
         'Content-Type':'application/x-www-form-urlencoded'
       }
     })
-    .then((results) => {
+    .then(results => {
       console.log('successfully connected to trails api', results);
-      var searchResults = results.places.map((place) => { // extract data of interest and return promise array of objects
+      var searchResults = results.data.places.map(city => { // extract data of interest and return promise array of objects
         var hike = {};
-        hike.directions = place.directions;
-        hike.lat = place.lat;
-        hike.lon = place.long;
-        place.activites.forEach((activity) => {
-          hike[place_id] = activity[place_id];
+        hike.directions = city.directions;
+        hike.lat = city.lat;
+        hike.lon = city.lon;
+        city.activities.forEach(activity => {
+          hike.place_id = activity.place_id;
           hike.name = activity.name;
           hike.description = activity.description;
           hike.url = activity.url;
