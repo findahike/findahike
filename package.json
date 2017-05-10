@@ -24,7 +24,7 @@
     "bootstrap": "^3.3.7",
     "express": "^4.15.2",
     "mysql": "^2.13.0",
-    "sequelize": "^3.30.4"
+    "ngmap": "^1.18.4"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"

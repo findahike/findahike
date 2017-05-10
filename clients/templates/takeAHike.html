@@ -1,26 +1,25 @@
-<meta name=“viewport” content=“width=device-width, initial-scale=1">
 <div class="main-wrapper">
   <button class="savedHikes">See Saved Hikes</button>
   <div class="main">
-    <h1>Where Do You Want To Hike?</h1>
+    <h1>Take A Hike</h1>
     <div>
       Enter Location:
       <textarea ng-model="location">INSERT USER_LOCATION</textarea>
-      <button ng-click="searchTrailsApi(location)">Submit Location</button>
+      <button ng-click="takeAHike.searchTrailsApi(location)">Submit Location</button>
     </div>
     <div>
       <select>
-        <option value="rating" ng-click="ctrl.filter(searchResults, 'rating')">Rating</option>
-        <option value="intensity" ng-click="ctrl.filter(searchResults, 'intensity')">Intensity</option>
-        <option value="scenic" ng-click="ctrl.filter(searchResults, 'scenic')">Scenic</option>
-        <option value="cellphoneReception" ng-click="ctrl.filter(searchResults, 'cellphoneReception')">Cellphone Reception</option>
+        <option value="rating" ng-click="takeAHike.filter(searchResults, 'rating')">Rating</option>
+        <option value="intensity" ng-click="takeAHike.filter(searchResults, 'intensity')">Intensity</option>
+        <option value="scenic" ng-click="takeAHike.filter(searchResults, 'scenic')">Scenic</option>
+        <option value="cellphoneReception" ng-click="takeAHike.filter(searchResults, 'cellphoneReception')">Cellphone Reception</option>
       </select>
     </div>
   </div>
-  <div ng-repeat="hike in searchResults">
+  <div ng-repeat="hike in takeAHike.searchResults">
     <div class="hike-wrapper">
       <div class="hike">
-        {{hike.name}}
+        {{hike}}
       </div>
     </div>
   </div>

@@ -1,6 +1,6 @@
 angular.module('hikingApp')
 
-.service('getHikeService', ($http, getHikeApiService) => {
+.service('getHikeService', function($http, getHikeApiService) {
 
   this.getUserProfile = (userId) => {
     $http({

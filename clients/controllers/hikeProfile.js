@@ -1,3 +1,4 @@
+
 angular.module('hikingApp')
 .controller('slideShow', function($scope) {
 
