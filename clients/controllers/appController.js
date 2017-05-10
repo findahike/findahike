@@ -31,5 +31,5 @@ angular.module('hikingApp')
     .then(username => console.log('succesfully created new user'));
   };
 
-})
+});
 
