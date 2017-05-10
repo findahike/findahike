@@ -1,1 +1,1 @@
-angular.module('hiking')
+//angular.module('hiking')

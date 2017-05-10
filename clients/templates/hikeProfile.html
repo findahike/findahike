@@ -12,31 +12,31 @@
     <h1>{{HikeName}}</h1>
     <div class="container">
       <div id="App1" class="row" ng-app="hikingApp">
-      <div class ="pictureSlideShow">
-      <div class="container slider" ng-controller="slideShow as vm">
-        <img ng-repeat="slide in slides" class="slide"
-           ng-hide="!isCurrentSlideIndex($index)" ng-src="{{slide.image}}">
-        <nav class="nav">
-          <div class="wrapper">
-            <ul class="dots">
-              <li class="dot" ng-repeat="slide in slides">
-                <a href="#" ng-class="{'active':isCurrentSlideIndex($index)}"
-                  ng-click="setCurrentSlideIndex($index);">{{slide.description}}</a>
-              </li>
-            </ul>
-          </div>
-        </nav>
-        <!-- <div ng-controller="AerialRotateCtrl as vm"> -->
+        <div ng-controller="AerialRotateCtrl as vm">
           <input type="button" value="Auto Rotate" ng-click="vm.autoRotate();">
-          <ng-map class="center" center="-34.397, 150.644"
+          <ng-map class="center" center="43.71274, -70.28522"
             zoom="18"
             map-type-id="SATELLITE"
             tilt="45"
             heading="90">
           </ng-map>
         </div>
-      </div>
-      </div>
+        <div class ="pictureSlideShow">
+          <div class="container slider" ng-controller="slideShow">
+            <img ng-repeat="slide in slides" class="slide"
+               ng-hide="!isCurrentSlideIndex($index)" ng-src="{{slide.image}}">
+            <nav class="nav">
+              <div class="wrapper">
+                <ul class="dots">
+                  <li class="dot" ng-repeat="slide in slides">
+                    <a href="#" ng-class="{'active':isCurrentSlideIndex($index)}"
+                      ng-click="setCurrentSlideIndex($index);">{{slide.description}}</a>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -54,6 +54,7 @@
         </div>
       </div>
     <script src="../components/stars.js"></script>
+    <script src="../controllers/map.js"></script>
     <script src="../controllers/hikeProfile.js"></script>
   </body>
 </div>
