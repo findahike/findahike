@@ -47,6 +47,7 @@ var trails = [
 // Seed database.
 // ==============
 var db = require('./dbConfig');
+
 var userName = 'User4';
 var trailName = 'Trail3';
 
