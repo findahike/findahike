@@ -1,7 +1,9 @@
 <div id="hikeProfile">
   <link rel="stylesheet" type="text/css" href="hikeProfile.css">
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
-<!--   <script src="ajax.googleapis.com/ajax/libs/angularjs/X.Y.Z/angular-route.js"></script> -->
+  <script src="../../node_modules/ngmap/build/scripts/ng-map.min.js"></script>
+  <script src="http://maps.google.com/maps/api/js?key=AIzaSyCNk9E_96kg6CPdRe9sQDSgHxta-h3NTJE"></script>
   <nav class="navbar">
     <button class="searchNew" ng-click="/takeAHike.html">Search For New Hikes</button>
     <button class="savedHikes" ng-click="/user.html">Look Up Saved Hikes</button>
@@ -11,19 +13,28 @@
     <div class="container">
       <div id="App1" class="row" ng-app="hikingApp">
       <div class ="pictureSlideShow">
-      <div class="container slider" ng-controller="slideShow">
-      <img ng-repeat="slide in slides" class="slide"
-         ng-hide="!isCurrentSlideIndex($index)" ng-src="{{slide.image}}">
-      <nav class="nav">
-        <div class="wrapper">
-          <ul class="dots">
-            <li class="dot" ng-repeat="slide in slides">
-              <a href="#" ng-class="{'active':isCurrentSlideIndex($index)}"
-                ng-click="setCurrentSlideIndex($index);">{{slide.description}}</a>
-            </li>
-          </ul>
+      <div class="container slider" ng-controller="slideShow as vm">
+        <img ng-repeat="slide in slides" class="slide"
+           ng-hide="!isCurrentSlideIndex($index)" ng-src="{{slide.image}}">
+        <nav class="nav">
+          <div class="wrapper">
+            <ul class="dots">
+              <li class="dot" ng-repeat="slide in slides">
+                <a href="#" ng-class="{'active':isCurrentSlideIndex($index)}"
+                  ng-click="setCurrentSlideIndex($index);">{{slide.description}}</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <!-- <div ng-controller="AerialRotateCtrl as vm"> -->
+          <input type="button" value="Auto Rotate" ng-click="vm.autoRotate();">
+          <ng-map class="center" center="-34.397, 150.644"
+            zoom="18"
+            map-type-id="SATELLITE"
+            tilt="45"
+            heading="90">
+          </ng-map>
         </div>
-      </nav>
       </div>
       </div>
       </div>
