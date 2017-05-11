@@ -2,7 +2,7 @@ var bodyParser = require('body-parser');
 var express = require('express');
 var mysql = require('mysql');
 
-var db = require('./dbConfig.js')
+var db = require('./dbConfig.js');
 
 var port = process.env.PORT || 8080;
 
@@ -15,7 +15,7 @@ app.use(express.static('./'));
 
 app.listen(port, function() {
   console.log(`Running the server on port ${port}`);
-})
+});
 
 app.get('/users/:name', function (req, res) {
   /*
@@ -187,11 +187,96 @@ app.post('/users/:name/completed', function (req, res) {
       - Don't add trail to completeds table if user has added it before.
   */
 
+  // Get user's id from users table.
+  var usersQuery = 'SELECT id FROM users WHERE name = ?';
+  db.query(usersQuery, [req.params.name], function (err, result) {
+    if (err) {
+      console.log('Error querying users table.');
+      throw err;
+    }
+    var userId = result[0].id;
+
+    // Get trailId.
+    var trailCoords = {latitude: req.body.latitude, longitude: req.body.longitude};
+    // If trail already exists in trails table with same latitude and longitude,
+    trailExists(trailCoords, function (exists) {
+      if (exists) {
+        console.log('it exists!');  // @test
+        getTrailByCoords(trailCoords, function (result) {
+          console.log(result);
+          var trailId = result.id;
+
+          var completedEntry = {
+            trailId: trailId,
+            userId: userId,
+            rating: req.body.rating,
+            phoneReception: req.body.phoneReception,
+            intensity: req.body.intensity,
+            scenic: req.body.scenic
+          };
+
+          db.query('INSERT INTO completeds SET ?', completedEntry, function (err) {
+            if (err) {
+              console.log('Error inserting into completeds table.');
+              throw err;
+            }
+            console.log('completedEntry:', completedEntry);  // @test
+            res.send(result);
+          });
+        });
+      } else {
+        // Insert trail into trails table and select id.
+        console.log('it does not exist');  // @test
+        // Build trailEntry object.
+        var trailEntry = {
+          name: req.body.name,
+          latitude: req.body.latitude,
+          longitude: req.body.longitude,
+          directions: req.body.directions,
+          description: req.body.description,
+          url: req.body.url
+        };
+        console.log('trailEntry:', trailEntry);  // @test
+        // Add trailEntry to trails table.
+        db.query('INSERT INTO trails SET ?', trailEntry, function (err, result) {
+          if (err) {
+            console.log('Error inserting into trails table.');
+            throw err;
+          }
+          console.log(result);  // @test
+          console.log(result.insertId);  // @test
+          // Get trailEntry id.
+          var trailId = result.insertId;
+
+          // Build completedEntry.
+          var completedEntry = {
+            trailId: trailId,
+            userId: userId,
+            rating: req.body.rating,
+            phoneReception: req.body.phoneReception,
+            intensity: req.body.intensity,
+            scenic: req.body.scenic
+          };
+
+          // Add completedEntry to completeds table.
+          db.query('INSERT INTO completeds SET ?', completedEntry, function (err) {
+            if (err) {
+              console.log('Error inserting into completeds table.');
+              throw err;
+            }
+            console.log('completedEntry:', completedEntry);  // @test
+            // Respond with completedEntry.
+            res.send(result);
+          });
+        });
+      }
+    });
+  });
 });
 
 var trailExists = function (coordinates, callback) {
   /*
-    Check if trail specified for coordinates already exists in trails table.
+    Check if trail specified by coordinates already exists in trails table.
     coordinates is an object with two properties: latitude and longitude.
     callback is a function to execute if query is successful.
     Pass true or false to callback.
