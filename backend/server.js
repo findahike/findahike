@@ -175,6 +175,7 @@ app.post('/users/:name/wishlist', function (req, res) {
       }
     });
   });
+});
 
 app.post('/users/:name/completed', function (req, res) {
   /*
@@ -185,11 +186,6 @@ app.post('/users/:name/completed', function (req, res) {
       - Refactor get userId logic into standalone module.
       - Don't add trail to completeds table if user has added it before.
   */
-};
-
-
-
-
 
 });
 
