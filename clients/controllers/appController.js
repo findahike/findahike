@@ -9,6 +9,7 @@ angular.module('hikingApp')
 
   // query the api
   $scope.searchTrailsApi = (city, lat, lon) => {
+    console.log('ran searchTrailsApi');
     getHikeApiService.searchTrailsApi(city, lat, lon)
     .then(searchResults => $scope.searchResults = searchResults);
   };
