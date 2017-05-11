@@ -11,6 +11,8 @@ angular.module('hikingApp')
    },
    controller: ($scope) => {
 
+    console.log($scope);
+
      //runs through trail array and sorts each object by the search value.
      //when we call the function on the click, we will need to pass in both parameters
      $scope.filter = (searchResults, searchVal) => {

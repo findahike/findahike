@@ -6,8 +6,8 @@ angular.module('hikingApp')
 
     var apiParams = {
       city: `q[city_cont]=${city}`,
-      lat: `lat=${lat}`,
-      lon: `lon=${lon}`,
+      // lat: `lat=${lat}`,
+      // lon: `lon=${lon}`,
       url:'https://trailapi-trailapi.p.mashape.com/',
       limit: 'limit=25',
       activity: 'q[activities_activity_type_name_eq]=hiking',
