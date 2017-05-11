@@ -4,7 +4,7 @@
     <!-- <button class="searchNew" ng-click="/takeAHike.html">Search For New Hikes</button> -->
     <!-- <button class="savedHikes" ng-click="/user.html">Look Up Saved Hikes</button> -->
   <!-- </nav> -->
-    <h1 class="text-center">{{HikeName}}</h1>
+    <h1 class="text-center">{{name}}</h1>
     <div id="App1" class="row" >
       <div class ="pictureSlideShow">
         <div class="container slider" ng-controller="slideShow">
@@ -38,7 +38,8 @@
           </div>
         </div>
       </div>
-
+      <p>{{description}}</p>
+      <p>{{directions}}</p>
       <div class="row">
         <div id ="trailAttributes" class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
           <div id="App2" ng-controller="StarCtrl" >
