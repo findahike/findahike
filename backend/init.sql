@@ -1,6 +1,6 @@
 /*
   Initializes database.
-  To use, open terminal in this folder and run 'mysql -u root < dbConfig.sql'.
+  To use, open terminal in this folder and run 'mysql -u root < init.sql'.
 */
 
 DROP DATABASE IF EXISTS hikingdb;
