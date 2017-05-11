@@ -74,7 +74,7 @@
             </select>
           </div>
         </div>
-      <div ng-repeat="hike in takeAHike.searchResults">
+      <div ng-repeat="hike in takeAHike.searchResults track by $index">
         <div class="hike-wrapper">
           <div class="hike">
             <img src="http://radnorlake.org/wp-content/gallery/trails/April-7th-Ganier-and-Lake-Trail-Pix-by-Steve-Ward-with-Americorps-2015-51.JPG" class="img-thumbnail" alt="Cinque Terre" width="150" height="150">
@@ -84,6 +84,7 @@
             {{hike.rating}}
             {{hike.intensity}}
             <button><a href='hikeProfile.html'>hike details</a></button>
+            <set-map-center hike=""></set-map-center>
           </div>
         </div>
       </div>
