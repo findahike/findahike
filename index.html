@@ -56,12 +56,16 @@
     </nav>
     <h1>Hello World</h1>
     <!--    //////////////// LOADING DIRECTIVES ////////////////    -->
+    <div ng-controller="AerialRotateCtrl">
     <take-a-hike
     ng-show="viewState==='takeAHike'"
     search-trails-api="searchTrailsApi"
     change-view-state="changeViewState"
-    search-results="searchResults">
+    search-results="searchResults"
+    set-lat-lon="setLatLon">
     </take-a-hike>
+    </div>
+
     <hike-profile
     ng-show="viewState==='hikeProfile'">
     </hike-profile>

@@ -8,6 +8,7 @@ angular.module('hikingApp')
       changeViewState: '<',
       searchTrailsApi: '<',
       searchResults: '<',
+      setLatLon: '<',
       filter: '&'
     },
     controller: ($scope) => {
