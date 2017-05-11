@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="/node_modules/ngmap/build/scripts/ng-map.js"></script>
+    <script src="http://maps.google.com/maps/api/js?key=AIzaSyCNk9E_96kg6CPdRe9sQDSgHxta-h3NTJE"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
     <title>Take A Hike</title>
@@ -39,7 +41,7 @@
               </button>
             </li>
             <li class="active">
-              <button type="button" class="btn btn-default btn-md navbar-btn">
+              <button type="button" class="btn btn-default btn-md navbar-btn" ng-click="changeViewState('hikeProfile')">
                 Log In
               </button>
             </li>
@@ -59,7 +61,10 @@
     search-trails-api="searchTrailsApi"
     search-results="searchResults">
     </take-a-hike>
-    <hike-profile></hike-profile>
+    <hike-profile
+    ng-show="viewState==='hikeProfile'">
+    </hike-profile>
+
     <script src="clients/components/app.js"></script>
     <script src="clients/controllers/appController.js"></script>
     <script src="clients/services/getHikeApiService.js"></script>
@@ -68,6 +73,9 @@
     <script src="clients/components/takeAHike.js"></script>
     <!-- add map, slideshow and stars controllers -->
     <script src="clients/components/hikeProfile.js"></script>
-    <script src="clients/components/starApp.js"></script>
+    <script src="clients/components/stars.js"></script>
+    <script src="clients/controllers/slideShowController.js"></script>
+    <script src="clients/controllers/mapController.js"></script>
+    <script src="clients/controllers/starRatingController.js"></script>
   </body>
 </html>

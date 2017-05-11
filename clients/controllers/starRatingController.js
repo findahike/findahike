@@ -1,4 +1,4 @@
-angular.module('starApp')
+angular.module('hikingApp')
 
 .controller('StarCtrl', ['$scope', function ($scope) {
   $scope.ratings = [{
@@ -22,3 +22,5 @@ angular.module('starApp')
     max: 5
   }];
 }]);
+
+angular.bootstrap(document.getElementById("App2"), ['hikingApp']);

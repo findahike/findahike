@@ -1,4 +1,4 @@
-angular.module('starApp')
+angular.module('hikingApp')
 
 .directive('starRating', function () {
   return {
