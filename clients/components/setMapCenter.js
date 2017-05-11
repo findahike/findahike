@@ -3,6 +3,7 @@ angular.module('hikingApp')
 .directive('setMapCenter', () => {
   return {
     controller: () => {
+      $scope.clickedMap()
 
     },
     controllerAs: 'ctrl',
