@@ -1,5 +1,5 @@
-
 angular.module('hikingApp')
+
 .controller('slideShow', function($scope) {
 
   $scope.slides = [

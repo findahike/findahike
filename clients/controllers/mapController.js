@@ -1,4 +1,5 @@
-angular.module('hikingApp', ['ngMap'])
+angular.module('hikingApp')
+
 .controller('AerialRotateCtrl', function($scope, $interval, NgMap) {
 
   var vm = this;

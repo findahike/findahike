@@ -1,4 +1,4 @@
-angular.module('hikingApp', [])
+angular.module('hikingApp')
 
 .directive('hikeProfile', () => {
   return {
