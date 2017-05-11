@@ -58,7 +58,7 @@
           <div class="row">
             <div class="col-lg-6">
               <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search for..." ng-model="city">
+                <input type="text" class="form-control" placeholder="Input City..." ng-model="city">
                 <span class="input-group-btn">
                   <button class="btn btn-default" type="button" ng-click="takeAHike.searchTrailsApi(city)">Go!</button>
                 </span>
@@ -76,15 +76,15 @@
         </div>
       <div ng-repeat="hike in takeAHike.searchResults track by $index">
         <div class="hike-wrapper">
-          <div class="hike">
-            <img src="http://radnorlake.org/wp-content/gallery/trails/April-7th-Ganier-and-Lake-Trail-Pix-by-Steve-Ward-with-Americorps-2015-51.JPG" class="img-thumbnail" alt="Cinque Terre" width="150" height="150">
-            {{hike.name}}
-            {{hike.city}}
-            {{hike.length}}
-            {{hike.rating}}
-            {{hike.intensity}}
-            <button ng-click="takeAHike.changeViewState('hikeProfile')">hike details</button>
-            <set-map-center hike=""></set-map-center>
+          <div id="hike" class ="row">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+              <img src="http://ssc.columbia.edu/files/idcenter/content/submit-photo-button.png" class="img-thumbnail" alt="Cinque Terre" width="150" height="150">
+            </div>
+            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12" >
+              <h3>{{hike.name}}</h3>
+              <p>{{hike.description}}</p>
+            <button ng-click="takeAHike.changeViewState('hikeProfile'); takeAHike.setLatLon(hike.lat, hike.lon)">hike details</button>
+            </div>
           </div>
         </div>
       </div>

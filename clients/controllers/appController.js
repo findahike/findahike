@@ -1,9 +1,21 @@
 angular.module('hikingApp')
 .controller('appController', ($scope, getHikeApiService, getHikeService, postHikeService) => {
 
+  // $scope.setLatLon = function (lat, lon) {
+  //   console.log(lat, 'lat');
+  //   console.log(lon, 'lon');
+  //   $scope.lat = lat;
+  //   $scope.lon = lon;
+  // };
+
   // control views
-  $scope.changeViewState = page => {
+  $scope.changeViewState = (page) => {
+    // lat = lat || null,
+    // lon = lon || null,
     $scope.viewState = page;
+    // if(page === 'hikeProfile') {
+    //   $scope.setLatLon(lat, lon);
+    // }
     console.log('changed view to ', $scope.viewState);
   };
 
