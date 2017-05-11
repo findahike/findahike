@@ -259,7 +259,7 @@ app.post('/users/:name/completed', function (req, res) {
           };
 
           // Add completedEntry to completeds table.
-          db.query('INSERT INTO completeds SET ?', completedEntry, function (err) {
+          db.query('INSERT INTO completeds SET ?', completedEntry, function (err, result) {
             if (err) {
               console.log('Error inserting into completeds table.');
               throw err;
