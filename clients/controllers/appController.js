@@ -1,6 +1,12 @@
 angular.module('hikingApp')
 .controller('appController', ($scope, getHikeApiService, getHikeService, postHikeService) => {
 
+  // @test: Create a default user.
+  $scope.user = {
+    name: 'User3',
+    completed: null,
+    wishlist: null
+  };
 
   // control views
   $scope.changeViewState = (page) => {
@@ -29,8 +35,14 @@ angular.module('hikingApp')
 
   // get the user profile from database
   $scope.getUserProfile = (userId) => {
-    getHikeApiService.getUserProfile(userId)
-    .then(userProfile => $scope.userProfile = userProfile); // expose userProfile
+    getHikeService.getUserProfile(userId)
+    .then(response => {
+      $scope.userProfile = response.data;  // expose userProfile
+      console.log('Return from getUserProfile():', $scope.userProfile);
+    })
+    .catch((err) => {
+      console.log('error retrieving user profile..');
+    });
   };
 
   // create a new user
