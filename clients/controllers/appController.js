@@ -8,6 +8,8 @@ angular.module('hikingApp')
     wishlist: null
   };
 
+  // init starting view
+  $scope.viewState = 'userProfile'
   // control views
   $scope.changeViewState = (page) => {
     $scope.viewState = page;
@@ -34,8 +36,8 @@ angular.module('hikingApp')
   };
 
   // get the user profile from database
-  $scope.getUserProfile = (userId) => {
-    getHikeService.getUserProfile(userId)
+  $scope.getUserProfile = (username) => {
+    getHikeService.getUserProfile(username)
     .then(response => {
       $scope.userProfile = response.data;  // expose userProfile
       console.log('Return from getUserProfile():', $scope.userProfile);

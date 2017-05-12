@@ -158,3 +158,20 @@
       color: gold;
   }
   /*stars ^^*/
+
+/*UserProfile*/
+.user-profile-bg {
+  position: absolute;
+  background-image: url('https://4.bp.blogspot.com/-ozZj0JPTKMw/VDO82Nmh8EI/AAAAAAABQRM/7tSBlH2nA_4/s0/Waterfall%2Band%2BHiking_HD.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 100%;
+  width: 100%;
+  opacity: 0.40;
+  filter: blur(3px);
+  filter: sepia(1);
+  filter: contrast(1);
+  filter: brightness(1);
+}
+

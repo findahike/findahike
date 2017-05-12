@@ -76,7 +76,12 @@
     </hike-profile>
 
     <user-profile
-      ng-show="viewState==='userProfile'">
+      ng-show="viewState==='userProfile'"
+      get-user-profile="getUserProfile"
+      change-view-state="changeViewState"
+      search-trails-api="searchTrailsApi"
+      search-results="searchResults"
+      set-lat-lon="setLatLon">
     </user-profile>
 
     <script src="clients/components/app.js"></script>
@@ -85,6 +90,7 @@
     <script src="clients/services/getHikeService.js"></script>
     <script src="clients/services/postHikeService.js"></script>
     <script src="clients/components/takeAHike.js"></script>
+    <script src="clients/components/userProfile.js"></script>
     <!-- add map, slideshow and stars controllers -->
     <script src="clients/components/hikeProfile.js"></script>
     <script src="clients/components/stars.js"></script>
