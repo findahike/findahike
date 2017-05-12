@@ -1,16 +1,11 @@
 angular.module('hikingApp')
 .controller('appController', ($scope, getHikeApiService, getHikeService, postHikeService) => {
 
-  // @test: Added a default user.
+  // @test: Create a default user.
   $scope.user = {
     name: 'User3',
     completed: null,
     wishlist: null
-  };
-
-  // @test: Logging function.
-  $scope.log = function (obj) {
-    console.log(obj);
   };
 
   // control views
@@ -43,7 +38,7 @@ angular.module('hikingApp')
     getHikeService.getUserProfile(userId)
     .then(response => {
       $scope.userProfile = response.data;  // expose userProfile
-      console.log('userProfile:', $scope.userProfile);
+      console.log('Return from getUserProfile():', $scope.userProfile);
     })
     .catch((err) => {
       console.log('error retrieving user profile..');
