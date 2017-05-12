@@ -40,9 +40,9 @@ angular.module('hikingApp')
   };
 
   $scope.hike = {
-    name: 'MATT IS FUNNY',
-    description: 'LOOKING!!!!',
-    directions: 'VICKI IS THE BEST'
+    name: '',
+    description: '',
+    directions: ''
   };
 
   $scope.hikeInfo = function(name, description, directions) {
