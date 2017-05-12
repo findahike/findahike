@@ -57,7 +57,6 @@
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
-    <h1>Hello World</h1>
     <!--    //////////////// LOADING DIRECTIVES ////////////////    -->
     <div ng-controller="AerialRotateCtrl">
       <take-a-hike
@@ -65,11 +64,13 @@
         search-trails-api="searchTrailsApi"
         change-view-state="changeViewState"
         search-results="searchResults"
+        hike-info="hikeInfo"
         set-lat-lon="setLatLon">
       </take-a-hike>
     </div>
 
     <hike-profile
+      hike="hike"
       ng-show="viewState==='hikeProfile'">
     </hike-profile>
 

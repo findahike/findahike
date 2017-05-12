@@ -8,11 +8,20 @@ angular.module('hikingApp')
       changeViewState: '<',
       searchTrailsApi: '<',
       searchResults: '<',
+      hikeInfo: '<',
       setLatLon: '<',
       filter: '&'
     },
     controller: ($scope) => {
-
+      // this.hikeInfo = function(name, description, directions) {
+      //   console.log("PROFILE", name, description, directions);
+      //   this.hikeName = name;
+      //   this.hikeDescription = description;
+      //   this.hikeDirections = directions;
+      // }
+      $scope.click = function(e) {
+        console.log('HELLOOOO', e);
+      }
       console.log($scope);
 
      //runs through trail array and sorts each object by the search value.

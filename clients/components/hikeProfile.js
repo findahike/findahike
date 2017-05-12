@@ -4,10 +4,10 @@ angular.module('hikingApp')
   return {
     restrict: 'E',
     scope: {
-      changeViewState: '<'
+      changeViewState: '<',
+      hike: '<'
     },
     controller: ($scope) => {
-      //console.log($scope);
     },
     controllerAs: 'takeAHike',
     bindToController: true,

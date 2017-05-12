@@ -39,5 +39,18 @@ angular.module('hikingApp')
     .then(username => console.log('succesfully created new user'));
   };
 
+  $scope.hike = {
+    name: 'MATT IS FUNNY',
+    description: 'LOOKING!!!!',
+    directions: 'VICKI IS THE BEST'
+  };
+
+  $scope.hikeInfo = function(name, description, directions) {
+    console.log("PROFILE", name, description, directions);
+    $scope.hike.name = name;
+    $scope.hike.description = description;
+    $scope.hike.directions = directions;
+  };
+
 });
 

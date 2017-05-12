@@ -83,8 +83,7 @@
             <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12" >
               <h3>{{hike.name}}</h3>
               <p>{{hike.description}}</p>
-              <button ng-click="takeAHike.changeViewState('hikeProfile'); takeAHike.setLatLon(hike.lat, hike.lon)">hike details</button>
-              <!-- <hike-profile name="hike.name" description="hike.description" directions="hike.directions"></hike-profile> -->
+              <button ng-click="takeAHike.changeViewState('hikeProfile'); takeAHike.setLatLon(hike.lat, hike.lon); takeAHike.hikeInfo(hike.name, hike.description, hike.directions)">hike details</button>
             </div>
           </div>
         </div>
