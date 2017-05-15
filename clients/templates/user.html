@@ -1,15 +1,15 @@
 <div class="user-profile-bg"></div>
   <div id="userProfile">
-    <h1 class="text-center">Signed in as {{user.name}}</h1>
+    <h1 class="text-center">Signed in as Vicki</h1>
     <div class="container">
       <div class="row">
         <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
         <h1 class="text-center">Wish List Hikes</h1>
-            <div class="wishListHikes" ng-repeat="wishlistHike in userProfile.userData.wishlist">
+            <div class="wishListHikes" ng-repeat="wishlistHike in userProfile.userData.wishlist track by $index">
               <div class="row" id="hike">
                   <div class="col-sm-3">
                     <img src="http://ssc.columbia.edu/files/idcenter/content/submit-photo-button.png" class="img-thumbnail" alt="Cinque Terre" width="150" height="150">
-                    <button type="button" class="btn btn-default btn-xs">
+                    <button type="button" class="btn btn-default btn-xs" ng-click="userProfile.moveToCompleted($index)">
                   Add to Completed
                 </button>
                   </div>

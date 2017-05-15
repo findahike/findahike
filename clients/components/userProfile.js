@@ -11,7 +11,8 @@ angular.module('hikingApp')
       filter: '&',
       getUserProfile: '<',
       userData: '<',
-      saveCompletedHike: '<'
+      saveCompletedHike: '<',
+      moveToCompleted: '<'
     },
 
     controller: ($scope) => {

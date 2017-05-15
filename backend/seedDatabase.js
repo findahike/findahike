@@ -13,41 +13,40 @@ var users = [
   {name: 'User1'},
   {name: 'User2'},
   {name: 'User3'},
-  {name: 'User4'}
+  {name: 'User4'},
+  {name: 'Vicki'}
 ];
 
 var trails = [
-  {
-    name: 'Trail1',
-    latitude: 11.10,
-    longitude: 100.10,
-    directions: 'Trail1 directions',
-    description: 'Trail1 description',
-    url: 'Trail1 url'
-  },
-  {
-    name: 'Trail2',
-    latitude: 22.20,
-    longitude: 200.20,
-    directions: 'Trail2 directions',
-    description: 'Trail2 description',
-    url: 'Trail2 url'
-  },
-  {
-    name: 'Trail3',
-    latitude: 33.30,
-    longitude: 300.30,
-    directions: 'Trail3 directions',
-    description: 'Trail3 description',
-    url: 'Trail3 url'
-  },
+  // {
+  //   name: 'Trail1',
+  //   latitude: 11.10,
+  //   longitude: 100.10,
+  //   directions: 'Trail1 directions',
+  //   description: 'Trail1 description',
+  //   url: 'Trail1 url'
+  // },
+  // {
+  //   name: 'Trail2',
+  //   latitude: 22.20,
+  //   longitude: 200.20,
+  //   directions: 'Trail2 directions',
+  //   description: 'Trail2 description',
+  //   url: 'Trail2 url'
+  // },
+  // {
+  //   name: 'Trail3',
+  //   latitude: 33.30,
+  //   longitude: 300.30,
+  //   directions: 'Trail3 directions',
+  //   description: 'Trail3 description',
+  //   url: 'Trail3 url'
+  // },
 ];
 
 // Seed database.
 // ==============
 var db = require('./dbConfig');
-
-var user = {name: 'Johnny'};
 
 // Seed users table.
 users.forEach(function (user) {
@@ -119,7 +118,7 @@ users.slice(0,3).forEach(function (user) {
 });
 
 // Seed wishlists table.
-users.slice(2).forEach(function (user) {
+users.slice(2, 5).forEach(function (user) {
   trails.forEach(function (trail) {
     var wishlist = {};
 
