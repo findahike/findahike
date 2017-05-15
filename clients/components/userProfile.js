@@ -9,12 +9,12 @@ angular.module('hikingApp')
       searchResults: '<',
       setLatLon: '<',
       filter: '&',
-      getUserProfile: '<'
+      getUserProfile: '<',
+      userData: '<',
+      saveCompletedHike: '<'
     },
 
     controller: ($scope) => {
-      console.log('i am in userProfile directive ',$scope.userProfile.getUserProfile);
-      // load profile
       // $scope.userProfile.getUserProfile('andrew');
     },
     controllerAs: 'userProfile',

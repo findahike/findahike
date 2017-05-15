@@ -2,37 +2,48 @@ angular.module('hikingApp')
 .controller('appController', ($scope, getHikeApiService, getHikeService, postHikeService) => {
 
   // @test: Create a default user.
-  $scope.user = {
-    name: 'User3',
-    completed: null,
-    wishlist: null
-  };
+  // $scope.user = {
+  //   name: 'User3',
+  //   completed: null,
+  //   wishlist: null
+  // };
 
-  // init starting view
-  $scope.viewState = 'userProfile'
-  // control views
+  $scope.viewState = 'userProfile' // init default view
+
   $scope.changeViewState = (page) => {
     $scope.viewState = page;
     console.log('changed view to ', $scope.viewState);
+    if (page === 'userProfile') { // janky way of auto refreshing userprofile page
+      $scope.getUserProfile('User1');
+    }
   };
 
-  // query the api
   $scope.searchTrailsApi = (city, lat, lon) => {
     console.log('ran searchTrailsApi');
     getHikeApiService.searchTrailsApi(city, lat, lon)
     .then(searchResults => $scope.searchResults = searchResults);
   };
 
-  // insert a completed hike into db
-  $scope.saveCompletedHike = (userId, hike) => {
+  $scope.saveCompletedHike = (username, hike) => {
     // decorate hike with user input
-    hike.recommendation = $scope.recommendation;
-    hike.cellphoneReception = $scope.cellphoneReception;
-    hike.intensity = $scope.intensity;
-    hike.scenic = $scope.scenic;
-    hike.rating = $scope.rating;
-    postHikeService.saveCompletedHike(userId, hike)
-    .then(hike => console.log('hike succesfully saved', hike));
+    // hike.recommendation = $scope.recommendation;
+    // hike.cellphoneReception = $scope.cellphoneReception;
+    // hike.intensity = $scope.intensity;
+    // hike.scenic = $scope.scenic;
+    // hike.rating = $scope.rating;
+    postHikeService.saveCompletedHike(username, hike)
+    .then(hike => console.log('hike added to completed', hike));
+  };
+
+  $scope.saveWishlistHike = (username, hike) => {
+    // decorate hike with user input
+    // hike.recommendation = $scope.recommendation;
+    // hike.cellphoneReception = $scope.cellphoneReception;
+    // hike.intensity = $scope.intensity;
+    // hike.scenic = $scope.scenic;
+    // hike.rating = $scope.rating;
+    postHikeService.saveWishlistHike(username, hike)
+    .then(hike => console.log('hike added to wishlist', hike));
   };
 
   // get the user profile from database
@@ -46,7 +57,7 @@ angular.module('hikingApp')
       console.log('error retrieving user profile..');
     });
   };
-
+  $scope.getUserProfile('User1');
   // create a new user
   $scope.saveUser = (username) => {
     postHikeService.saveUser(username)

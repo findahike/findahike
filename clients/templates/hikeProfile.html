@@ -4,7 +4,7 @@
     <!-- <button class="searchNew" ng-click="/takeAHike.html">Search For New Hikes</button> -->
     <!-- <button class="savedHikes" ng-click="/user.html">Look Up Saved Hikes</button> -->
   <!-- </nav> -->
-    <h1 class="text-center">{{takeAHike.hike.name}}</h1>
+    <h1 class="text-center">{{hikeProfile.hike.name}}</h1>
     <div id="App1" class="row" >
       <div class ="pictureSlideShow">
         <div class="container slider" ng-controller="slideShow">
@@ -44,8 +44,8 @@
           </div>
         </div>
       </div>
-      <p><strong>Description:</strong> {{takeAHike.hike.description}}</p>
-      <p><strong>Directions:</strong> {{takeAHike.hike.directions}}</p>
+      <p><strong>Description:</strong> {{hikeProfile.hike.description}}</p>
+      <p><strong>Directions:</strong> {{hikeProfile.hike.directions}}</p>
       <div class="row">
         <div id ="trailAttributes" class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
           <div id="App2" ng-controller="StarCtrl" >
@@ -59,7 +59,7 @@
           </div>
         </div>
         <div id ="saveHike" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-        <button type="button" class="btn btn-default btn-md fixed-bottom" ng-click="saveHikeToDataBase"> <!--TODO -->
+        <button type="button" class="btn btn-default btn-md fixed-bottom" ng-click="hikeProfile.saveWishlistHike('User1', hikeProfile.hike)"> <!--HARDCODED USER1 !!!!!! -->
           Save Hike
         </button>
       </div>
