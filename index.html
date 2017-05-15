@@ -35,7 +35,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li class="active">
             <!-- @test: Added second click handler. -->
-              <button type="button" class="btn btn-default btn-md navbar-btn" ng-click="changeViewState('userProfile');getUserProfile(user.name)">
+              <button type="button" class="btn btn-default btn-md navbar-btn" ng-click="changeViewState('userProfile')">
                 See Saved Hikes
               </button>
             </li>
@@ -45,7 +45,7 @@
               </button>
             </li>
             <li class="active">
-              <button type="button" class="btn btn-default btn-md navbar-btn" ng-click="changeViewState('hikeProfile')">
+              <button type="button" class="btn btn-default btn-md navbar-btn">
                 Log In
               </button>
             </li>
@@ -72,16 +72,19 @@
 
     <hike-profile
       hike="hike"
-      ng-show="viewState==='hikeProfile'">
+      ng-show="viewState==='hikeProfile'"
+      save-wishlist-hike="saveWishlistHike">
     </hike-profile>
 
     <user-profile
       ng-show="viewState==='userProfile'"
-      get-user-profile="getUserProfile"
       change-view-state="changeViewState"
+      get-user-profile="getUserProfile"
+      user-data="userProfile"
       search-trails-api="searchTrailsApi"
       search-results="searchResults"
-      set-lat-lon="setLatLon">
+      set-lat-lon="setLatLon"
+      save-completed-hike="saveCompletedHike">
     </user-profile>
 
     <script src="clients/components/app.js"></script>

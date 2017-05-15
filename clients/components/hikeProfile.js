@@ -5,11 +5,12 @@ angular.module('hikingApp')
     restrict: 'E',
     scope: {
       changeViewState: '<',
-      hike: '<'
+      hike: '<',
+      saveWishlistHike: '<'
     },
     controller: ($scope) => {
     },
-    controllerAs: 'takeAHike',
+    controllerAs: 'hikeProfile',
     bindToController: true,
     templateUrl: 'clients/templates/hikeProfile.html'
   };
