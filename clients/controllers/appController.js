@@ -1,12 +1,12 @@
 angular.module('hikingApp')
 .controller('appController', ($scope, getHikeApiService, getHikeService, postHikeService) => {
 
-  // @test: Create a default user.
-  // $scope.user = {
-  //   name: 'User3',
-  //   completed: null,
-  //   wishlist: null
-  // };
+  //@test: Create a default user.
+  $scope.user = {
+    name: 'User3',
+    completed: null,
+    wishlist: null
+  };
 
   $scope.viewState = 'userProfile' // init default view
 
@@ -76,6 +76,12 @@ angular.module('hikingApp')
     $scope.hike.description = description;
     $scope.hike.directions = directions;
   };
+
+  $scope.moveToCompleted = function(index) {
+    console.log('clicked moveToCompleted');
+    var completedTrail = $scope.userProfile.wishlist.splice(index, 1)
+    $scope.userProfile.completeds.push(completedTrail);
+  }
 
 });
 
