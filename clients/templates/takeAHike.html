@@ -1,94 +1,41 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../styles.css">
-    </head>
-    <body>
-      <nav class="navbar navbar-default navbar-static-top">
-        <div class="container-fluid"> -->
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <!-- <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#" ng-click="changeViewState('takeAHike')">Take A Hike</a>
-          <p class="navbar-text">Signed in as {{user.name}}</p>
-        </div> -->
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
- <!--        <div class="collapse navbar-collapse" id="navbar-collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li class="active">
-              <button type="button" class="btn btn-default btn-md navbar-btn" on-click="getUserProfile">
-                See Saved Hikes
-              </button>
-            </li>
-            <li class="active">
-              <button type="button" class="btn btn-default btn-md navbar-btn" ng-click="changeViewState('takeAHike')">
-                Search New Hike
-              </button>
-            </li>
-            <li class="active">
-              <button type="button" class="btn btn-default btn-md navbar-btn">
-                Log In
-              </button>
-            </li>
-            <li class="active">
-              <button type="button" class="btn btn-default btn-md navbar-btn">
-                Log Out
-              </button>
-            </li>
-          </ul> -->
-        <!-- </div> --><!-- /.navbar-collapse -->
-        <!-- </div> --><!-- /.container-fluid -->
-      <!-- </nav> -->
-<!--       Everything above ^^^^ needs to be deleted before joining with index.hmtl -->
-      <div class="container">
-        <div class="takeAHike">
-          <h1 class="text-center">Take A Hike</h1>
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Input City..." ng-model="city">
-                <span class="input-group-btn">
-                  <button class="btn btn-default" type="button" ng-click="takeAHike.searchTrailsApi(city)">Go!</button>
-                </span>
-              </div>
-            </div>
-          </div>
-          <div class="filterBar">
-            <select>
-              <option value="rating" ng-click="takeAHike.filter(searchResults, 'rating')">Rating</option>
-              <option value="intensity" ng-click="takeAHike.filter(searchResults, 'intensity')">Intensity</option>
-              <option value="scenic" ng-click="takeAHike.filter(searchResults, 'scenic')">Scenic</option>
-              <option value="cellphoneReception" ng-click="takeAHike.filter(searchResults, 'cellphoneReception')">Cellphone Reception</option>
-            </select>
-          </div>
-        </div>
-      <div ng-repeat="hike in takeAHike.searchResults track by $index">
-        <div class="hike-wrapper">
-          <div id="hike" class ="row">
-            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
-              <img src="http://ssc.columbia.edu/files/idcenter/content/submit-photo-button.png" class="img-thumbnail" alt="Cinque Terre" width="150" height="150">
-            </div>
-            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12" >
-              <h3>{{hike.name}}</h3>
-              <p>{{hike.description}}</p>
-              <button ng-click="takeAHike.changeViewState('hikeProfile'); takeAHike.setLatLon(hike.lat, hike.lon); takeAHike.hikeInfo(hike.name, hike.description, hike.directions)">hike details</button>
-            </div>
-          </div>
+<!-- Search for Hikes Page -->
+<div class="container">
+  <div class="takeAHike">
+    <h1 class="text-center">Take A Hike</h1>
+<!--     Search Bar -->
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Input City..." ng-model="city">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button" ng-click="takeAHike.searchTrailsApi(city)">Go!</button>
+          </span>
         </div>
       </div>
     </div>
-<!--     Delete body and html closing tags before joining with index.html -->
-<!--   </body>
-</html> -->
+<!--     Filter Options -->
+    <div class="filterBar">
+      <select>
+        <option value="rating" ng-click="takeAHike.filter(searchResults, 'rating')">Rating</option>
+        <option value="intensity" ng-click="takeAHike.filter(searchResults, 'intensity')">Intensity</option>
+        <option value="scenic" ng-click="takeAHike.filter(searchResults, 'scenic')">Scenic</option>
+        <option value="cellphoneReception" ng-click="takeAHike.filter(searchResults, 'cellphoneReception')">Cellphone Reception</option>
+      </select>
+    </div>
+  </div>
+<!--   Hike Results -->
+  <div ng-repeat="hike in takeAHike.searchResults track by $index">
+    <div class="hike-wrapper">
+      <div id="hike" class ="row">
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+          <img src="http://ssc.columbia.edu/files/idcenter/content/submit-photo-button.png" class="img-thumbnail" alt="Cinque Terre" width="150" height="150">
+        </div>
+        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12" >
+          <h3>{{hike.name}}</h3>
+          <p>{{hike.description}}</p>
+          <button ng-click="takeAHike.changeViewState('hikeProfile'); takeAHike.setLatLon(hike.lat, hike.lon); takeAHike.hikeInfo(hike.name, hike.description, hike.directions)">hike details</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

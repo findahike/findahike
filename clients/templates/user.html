@@ -1,55 +1,68 @@
 <div class="user-profile-bg"></div>
-  <div id="userProfile">
-    <h1 class="text-center">Signed in as Vicki</h1>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
-        <h1 class="text-center">Wish List Hikes</h1>
-            <div class="wishListHikes" ng-repeat="wishlistHike in userProfile.userData.wishlist track by $index">
-              <div class="row" id="hike">
-                  <div class="col-sm-3">
-                    <img src="http://ssc.columbia.edu/files/idcenter/content/submit-photo-button.png" class="img-thumbnail" alt="Cinque Terre" width="150" height="150">
-                    <button type="button" class="btn btn-default btn-xs" ng-click="userProfile.moveToCompleted($index)">
-                  Add to Completed
-                </button>
-                  </div>
-                  <div class="col-sm-3 col-sm-offset-1">
-                    <p>{{wishlistHike.name}}</p>
-                    <div class="row">
-                      <div id="App2" ng-controller="StarCtrl">
-                        <span ng-repeat="rating in ratings">
-                        {{rating.name}}: {{rating.current}} out of {{rating.max}}
-                          <div star-rating rating-value="rating.current" max="rating.max" ></div>
-                        </span>
-                      </div>
+<div id="userProfile">
+  <h1 class="text-center">Signed in as Vicki</h1>
+  <div class="container">
+<!--   This Row holds both hike lists -->
+    <div class="row">
+<!--     Wish List Hike Column -->
+      <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+      <h1 class="text-center">Wish List Hikes</h1>
+          <div class="wishListHikes" ng-repeat="wishlistHike in userProfile.userData.wishlist track by $index">
+            <div class="row" id="hike">
+<!--             Each Individual Hike -->
+                <div class="col-sm-3">
+               <!--  Individual Hike Pictures -->
+                  <img src="http://ssc.columbia.edu/files/idcenter/content/submit-photo-button.png" class="img-thumbnail" alt="Cinque Terre" width="150" height="150">
+                  <button type="button" class="btn btn-default btn-xs" ng-click="userProfile.moveToCompleted($index)">
+                Add to Completed
+              </button>
+                </div>
+<!--                 Individual Hike Ratings -->
+                <div class="col-sm-3 col-sm-offset-1">
+                  <p>{{wishlistHike.name}}</p>
+                  <div class="row">
+                    <div id="App2" ng-controller="StarCtrl">
+                      <span ng-repeat="rating in ratings">
+                      {{rating.name}}: {{rating.current}} out of {{rating.max}}
+                        <div star-rating rating-value="rating.current" max="rating.max" ></div>
+                      </span>
                     </div>
                   </div>
-              </div>
-          </div each-wish-hike ng-click="takeAHike.changeViewState('hikeProfile'); takeAHike.setLatLon(hike.lat, hike.lon)">
-        </div>
-        <div class="col-lg-5 col-lg-offset-2 col-md-5 col-md-offset-2 col-sm-5 col-sm-offset-2 col-xs-12">
-          <h1 class="text-center">Completed Hikes</h1>
-          <div class ="completedListHikes" ng-repeat="completedHike in userProfile.userData.completeds">
-            <div class="row" id="hike">
-              <div class="col-sm-3">
-                <img src="http://ssc.columbia.edu/files/idcenter/content/submit-photo-button.png" class="img-thumbnail" alt="Cinque Terre" width="150" height="150">
-                <button type="button" class="btn btn-default btn-xs">
-                  Return to Wish List
-                </button>
-              </div>
-              <div class="col-sm-3 col-sm-offset-1">
-                <p>{{completedHike.name}}</p>
-                <div id="App2" ng-controller="StarCtrl">
-                  <span ng-repeat="rating in ratings">
-                    {{rating.name}}: {{rating.current}} out of {{rating.max}}
-                    <div star-rating rating-value="rating.current" max="rating.max" ></div>
-                  </span>
                 </div>
+            </div>
+        </div each-wish-hike ng-click="takeAHike.changeViewState('hikeProfile'); takeAHike.setLatLon(hike.lat, hike.lon)"> <!-- On click of hike, redirects to hikeProfile Page -->
+      </div>
+<!--       Completed Hikes Column -->
+      <div class="col-lg-5 col-lg-offset-2 col-md-5 col-md-offset-2 col-sm-5 col-sm-offset-2 col-xs-12">
+        <h1 class="text-center">Completed Hikes</h1>
+        <div class ="completedListHikes" ng-repeat="completedHike in userProfile.userData.completeds">
+          <div class="row" id="hike">
+<!--           Each Individual Hike -->
+            <div class="col-sm-3">
+            <!-- Individual Hike Pictures -->
+              <img src="http://ssc.columbia.edu/files/idcenter/content/submit-photo-button.png" class="img-thumbnail" alt="Cinque Terre" width="150" height="150">
+              <button type="button" class="btn btn-default btn-xs">
+                Return to Wish List
+              </button>
+            </div>
+            <!-- Individual Hike Ratings -->
+            <div class="col-sm-3 col-sm-offset-1">
+              <p>{{completedHike.name}}</p>
+              <div id="App2" ng-controller="StarCtrl">
+                <span ng-repeat="rating in ratings">
+                  {{rating.name}}: {{rating.current}} out of {{rating.max}}
+                  <div star-rating rating-value="rating.current" max="rating.max" ></div>
+                </span>
               </div>
             </div>
-          </div each-completed-hike ng-click="takeAHike.changeViewState('hikeProfile'); takeAHike.setLatLon(hike.lat, hike.lon)">
+          </div>
+        </div each-completed-hike ng-click="takeAHike.changeViewState('hikeProfile'); takeAHike.setLatLon(hike.lat, hike.lon)"> <!-- On click of hike, redirects to hikeProfile Page -->
 
-        </div>
       </div>
     </div>
   </div>
+</div>
+
+
+
+

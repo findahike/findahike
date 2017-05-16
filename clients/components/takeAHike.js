@@ -5,12 +5,12 @@ angular.module('hikingApp')
   return {
     restrict: 'E',
     scope: {
-      changeViewState: '<',
-      searchTrailsApi: '<',
-      searchResults: '<',
-      hikeInfo: '<',
-      setLatLon: '<',
-      filter: '&'
+      changeViewState: '<', //allows user to change pages function is on appController.js
+      searchTrailsApi: '<', //sends a get request to trailsAPI function is on appController.js and uses getHikeApiService.js
+      searchResults: '<', //holds results from trailsAPI
+      hikeInfo: '<',  //individual hike object
+      setLatLon: '<', //function to grab the latitude and longitude to send to the map function is on mapController.js
+      filter: '&' //allows user to filter search results function is on line 29
     },
     controller: ($scope) => {
       // this.hikeInfo = function(name, description, directions) {
@@ -21,11 +21,10 @@ angular.module('hikingApp')
       // }
       $scope.click = function(e) {
         console.log('HELLOOOO', e);
-      }
+      };
       console.log($scope);
 
      //runs through trail array and sorts each object by the search value.
-     //when we call the function on the click, we will need to pass in both parameters
       $scope.filter = (searchResults, searchVal) => {
         return searchResults.sort(function(obj1, obj2){
           return obj1[searchVal] - obj2[searchVal];

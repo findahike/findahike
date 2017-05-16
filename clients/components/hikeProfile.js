@@ -4,9 +4,9 @@ angular.module('hikingApp')
   return {
     restrict: 'E',
     scope: {
-      changeViewState: '<',
-      hike: '<',
-      saveWishlistHike: '<'
+      changeViewState: '<', //allows user to change pages function is on appController.js
+      hike: '<',            //passes individual hike details
+      saveWishlistHike: '<' //allows user to save hikes from hikeProfile to user profile function is on appController.js & postHikeService.js
     },
     controller: ($scope) => {
     },
