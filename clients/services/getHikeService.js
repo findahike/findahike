@@ -7,5 +7,6 @@ angular.module('hikingApp')
       method: 'GET',
       url: `/users/${username}`
     })
+    .catch(err => console.log('error retrieving user profile'));
   };
 })

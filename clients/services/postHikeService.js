@@ -2,7 +2,7 @@ angular.module('hikingApp')
 
 .service('postHikeService', function($http) {
 
-  this.saveCompletedHike = (username, hike) => { // handles wishlist and completed hikes
+  this.saveCompletedHike = (username, hike) => {
     return $http({
       method: 'POST',
       url: `/users/${username}/completed`,
@@ -29,7 +29,7 @@ angular.module('hikingApp')
     });
   };
 
-  this.saveWishlistHike = (username, hike) => { // handles wishlist and completed hikes
+  this.saveWishlistHike = (username, hike) => {
     return $http({
       method: 'POST',
       url: `/users/${username}/wishlist`,
