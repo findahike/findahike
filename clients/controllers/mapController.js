@@ -3,12 +3,8 @@ angular.module('hikingApp')
 .controller('AerialRotateCtrl', function($scope, $interval, NgMap) {
   var vm = this;
 
-
-
   $scope.setLatLon = function (lat, lon) {
-    console.log(lat, lon, 'inside mapController');
     NgMap.getMap().then(function(map) {
-      console.log(map.getCenter());
       vm.map = map;
       var pos = {
         lat: lat,

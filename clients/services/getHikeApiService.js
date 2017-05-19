@@ -6,14 +6,13 @@ angular.module('hikingApp')
 
     var apiParams = {
       city: `q[city_cont]=${city}`,
-      // lat: `lat=${lat}`,
-      // lon: `lon=${lon}`,
       url:'https://trailapi-trailapi.p.mashape.com/',
       limit: 'limit=25',
       activity: 'q[activities_activity_type_name_eq]=hiking',
       radius: 'radius=25'
     };
-    // need to do this or api query won't work?
+
+    // if lat or lon are supplied use them, otherwise clear their query fields
     lat ? apiParams.lat : apiParams.lat = '';
     lon ? apiParams.lon : apiParams.lon = '';
 
@@ -27,8 +26,7 @@ angular.module('hikingApp')
       }
     })
     .then(results => {
-      console.log('successfully connected to trails api', results);
-      var searchResults = results.data.places.map(city => { // extract data of interest and return promise array of objects
+      var searchResults = results.data.places.map(city => { // extract data of interest
         var hike = {};
         hike.directions = city.directions;
         hike.lat = city.lat;
